@@ -414,3 +414,28 @@
   }
   export { showResults };
   ```
+
+### 14. Ask user to re-use app
+
+- create `askReuse.ts` to ask user to re run the app
+
+  ```ts
+  import inquirer from 'inquirer';
+  async function askToReuse(): Promise<string> {
+    enum Commands {
+      Repeat = 'Repeat conversion for same pair',
+      Reuse = 'Reuse App for new Conversion',
+      Quit = 'Quit App',
+    }
+    const resuseAppC = await inquirer.prompt([
+      {
+        message: 'What You want to do next ? ',
+        name: 'resuseApp',
+        type: 'list',
+        choices: Object.values(Commands),
+      },
+    ]);
+    return resuseAppC['resuseApp'];
+  }
+  export { askToReuse };
+  ```

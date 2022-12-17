@@ -461,7 +461,7 @@
   export { askInputAmount };
   ```
 
-### 16. Call all fumctions in a sequence
+### 16. Call all functions in a sequence
 
 - Update `index.ts` to combine all the above said functionality
 
@@ -521,4 +521,32 @@
     }
   }
   currencyConverter();
+  ```
+
+### 17. Publish as NPX package
+
+- login to npm
+
+  ```cmd
+  npm login
+  ```
+
+- publish app
+
+  ```cmd
+  npm publish
+  ```
+
+- to update
+
+  ```cmd
+  npm version <type>
+  ```
+
+- version types
+
+  ```
+  patch
+  minor
+  major
   ```

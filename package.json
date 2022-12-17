@@ -1,7 +1,7 @@
 {
   "name": "wmd-ts-currency-converter",
   "version": "1.0.0",
-  "description": "",
+  "description": "A CLI based currency converter using typescript and published as an executable npm package.",
   "main": "./dist/index.js",
   "type": "module",
   "scripts": {

@@ -346,3 +346,41 @@
   }
   export { getResults, ApiResponse };
   ```
+
+### 12. Analyse input api response to get final result
+
+- create `finalizeResults.ts` to analyse user input and api response to form final result
+
+  ```ts
+  import { UserInput } from './askInputs.js';
+  import { ApiResponse } from './getResults.js';
+  interface FinalResult {
+    base: string;
+    final: string;
+    base_amount: number;
+    final_amount: number;
+    last_update: string;
+    next_update: string;
+  }
+  async function finalizeResults(
+    apiResults: ApiResponse,
+    userInputs: UserInput
+  ): Promise<FinalResult> {
+    let finalResult: FinalResult = {
+      base: `${userInputs.countryFrom.split(' - ')[1]} (${
+        userInputs.countryFrom.split(' - ')[0]
+      })`,
+      final: `${userInputs.countryTo.split(' - ')[1]} (${
+        userInputs.countryTo.split(' - ')[0]
+      })`,
+      base_amount: userInputs.amount,
+      final_amount:
+        apiResults.conversion_rates[userInputs.countryTo.split(' - ')[0]] *
+        userInputs.amount,
+      last_update: apiResults.time_last_update_utc.slice(0, 16),
+      next_update: apiResults.time_next_update_utc.slice(0, 16),
+    };
+    return finalResult;
+  }
+  export { finalizeResults, FinalResult };
+  ```

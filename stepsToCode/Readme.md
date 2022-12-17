@@ -198,3 +198,31 @@
   }
   export { startApp };
   ```
+
+### 8. Create closing message
+
+- Create `quitApp.ts` to display a message along with animation before qutting the app
+
+  ```ts
+  import ora, { Ora } from 'ora';
+  import chalk from 'chalk';
+  function quitApp(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      console.log('');
+      const spinner: Ora = ora(chalk.magenta(' See You Again '));
+      spinner.spinner = 'material';
+      spinner.color = 'magenta';
+      spinner.start();
+      setTimeout(() => {
+        spinner.color = 'red';
+        spinner.text = chalk.bgRed(' Closing App ! ');
+      }, 1500);
+      setTimeout(() => {
+        spinner.stop();
+        console.clear();
+        resolve(true);
+      }, 3000);
+    });
+  }
+  export { quitApp };
+  ```

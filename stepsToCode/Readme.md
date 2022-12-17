@@ -175,3 +175,26 @@
   }
   export { askToUse };
   ```
+
+### 7. Create staring animation
+
+- Create `startApp.ts` with the following content to display an animation before starting or re-running the app
+
+  ```ts
+  import ora, { Ora } from 'ora';
+  import chalk from 'chalk';
+  function startApp(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      console.log('');
+      const spinner: Ora = ora(chalk.green(' Starting App '));
+      spinner.spinner = 'earth';
+      spinner.start();
+      setTimeout(() => {
+        spinner.stop();
+        console.clear();
+        resolve(true);
+      }, 1500);
+    });
+  }
+  export { startApp };
+  ```

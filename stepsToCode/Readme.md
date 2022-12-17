@@ -151,3 +151,27 @@
   }
   export { instructions };
   ```
+
+### 6. Ask user to play or quit
+
+- Create `askToUse.ts` with the following content to ask user to use the app or quit with out using
+
+  ```ts
+  import inquirer from 'inquirer';
+  async function askToUse(): Promise<string> {
+    enum Commands {
+      Use = 'Use App',
+      Quit = 'Quit App',
+    }
+    const startAppC = await inquirer.prompt([
+      {
+        message: 'Do you wan to continue ? ',
+        name: 'startApp',
+        type: 'list',
+        choices: Object.values(Commands),
+      },
+    ]);
+    return startAppC['startApp'];
+  }
+  export { askToUse };
+  ```

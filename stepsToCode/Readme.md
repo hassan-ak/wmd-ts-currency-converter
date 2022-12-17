@@ -439,3 +439,24 @@
   }
   export { askToReuse };
   ```
+
+### 15. Ask amount on reuse
+
+- create `askAmount.ts` to ask user for amount in case of re-using app with the same pair
+
+  ```ts
+  import inquirer from 'inquirer';
+  async function askInputAmount(parm: string): Promise<number> {
+    console.log('');
+    let userInputsAmount: { amount: number } = await inquirer.prompt([
+      {
+        type: 'number',
+        name: 'amount',
+        message: `Enter Amount in  ${parm}: `,
+        default: 0,
+      },
+    ]);
+    return userInputsAmount['amount'];
+  }
+  export { askInputAmount };
+  ```

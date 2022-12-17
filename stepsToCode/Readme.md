@@ -48,3 +48,35 @@
   },
   "bin": "./dist/index.js",
   ```
+
+### 2. Install dependencies
+
+- Multiple third-party packages to be used in this project so install different dependacies using following commands
+
+  ```cmd
+  npm install ora
+  npm install chalk
+  npm install fuzzy
+  npm install inquirer
+  npm install cli-table
+  npm install node-fetch
+  npm install inquirer-autocomplete-prompt
+  ```
+
+- Install types for the installed dependancies for the development using following set of commands
+
+  ```cmd
+  npm install --save-dev @types/ora
+  npm install --save-dev @types/chalk
+  npm install --save-dev @types/inquirer
+  npm install --save-dev @types/cli-table
+  npm install --save-dev @types/node-fetch
+  npm install --save-dev @types/inquirer-autocomplete-prompt
+  ```
+
+- After installation `package.json` file will be updated and `package-lock.json` file along with `node_modules` folder will be created. We don't need git to track newly created files and folders so create a `.gitignore` file with the following content
+
+  ```gitignore
+  node_modules
+  package-lock.json
+  ```

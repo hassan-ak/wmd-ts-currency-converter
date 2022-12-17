@@ -105,3 +105,24 @@
   ```
 
 - If everything is right we will have a console output.
+
+### 4. Create welcome message
+
+- Create `welcome.ts` will the following content to display welcome message / app title to the user
+
+  ```ts
+  import chalk from 'chalk';
+  async function wellCome(): Promise<boolean> {
+    return new Promise<boolean>((resolve) => {
+      console.log('💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰');
+      console.log(`💰💰💰${chalk.bgWhite('                    ')}💰💰💰`);
+      console.log(`💰💰💰${chalk.inverse(' Currency Converter ')}💰💰💰`);
+      console.log(`💰💰💰${chalk.bgWhite('                    ')}💰💰💰`);
+      console.log('💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰💰\n');
+      setTimeout(() => {
+        resolve(true);
+      }, 500);
+    });
+  }
+  export { wellCome };
+  ```

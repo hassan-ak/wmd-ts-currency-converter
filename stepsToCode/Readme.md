@@ -460,3 +460,65 @@
   }
   export { askInputAmount };
   ```
+
+### 16. Call all fumctions in a sequence
+
+- Update `index.ts` to combine all the above said functionality
+
+  ```ts
+  #!/usr/bin/env node
+  import chalk from 'chalk';
+  import { quitApp } from './quitApp.js';
+  import { wellCome } from './welcome.js';
+  import { askToUse } from './askToUse.js';
+  import { startApp } from './startApp.js';
+  import { askInput } from './askInputs.js';
+  import { askToReuse } from './askReuse.js';
+  import { getResults } from './getResults.js';
+  import { showResults } from './showResults.js';
+  import { askInputAmount } from './askAmount.js';
+  import { instructions } from './instructions.js';
+  import { finalizeResults } from './finalizeResults.js';
+  async function currencyConverter() {
+    console.clear();
+    await wellCome();
+    await instructions();
+    let useApp = await askToUse();
+    if (useApp === 'Use App') {
+      await startApp();
+      let repeat = false;
+      do {
+        console.clear();
+        await wellCome();
+        let userInputs = await askInput();
+        let results = await getResults(userInputs);
+        if (results === 'error') {
+          console.log(chalk.bgRed('\nThere is some error, kindly try Again.'));
+          repeat = false;
+          await quitApp();
+        } else {
+          let reuse = false;
+          do {
+            let finalResult = await finalizeResults(results, userInputs);
+            await showResults(finalResult);
+            let reUs = await askToReuse();
+            if (reUs === 'Repeat conversion for same pair') {
+              reuse = true;
+              userInputs.amount = await askInputAmount(finalResult.base);
+            } else if (reUs === 'Reuse App for new Conversion') {
+              reuse = false;
+              repeat = true;
+            } else {
+              reuse = false;
+              repeat = false;
+              await quitApp();
+            }
+          } while (reuse);
+        }
+      } while (repeat);
+    } else {
+      await quitApp();
+    }
+  }
+  currencyConverter();
+  ```

@@ -226,3 +226,22 @@
   }
   export { quitApp };
   ```
+
+### 9. Create Currencies list
+
+- Create `currencies.ts` to create a list of all currencies to be avaialable in the app. Currencies list is available at [exchangerate-api](https://www.exchangerate-api.com/docs/supported-currencies)
+
+  ```ts
+  let currencies: string[] = [
+    'AED - UAE Dirham - United Arab Emirates',
+    'AFN - Afghan Afghani - Afghanistan',
+    'ALL - Albanian Lek - Albania',
+    ...
+    ...
+    ....
+    'ZAR - South African Rand - South Africa',
+    'ZMW - Zambian Kwacha - Zambia',
+    'ZWL - Zimbabwean Dollar - Zimbabwe',
+  ];
+  export { currencies };
+  ```

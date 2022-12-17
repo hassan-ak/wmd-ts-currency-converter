@@ -384,3 +384,33 @@
   }
   export { finalizeResults, FinalResult };
   ```
+
+### 13. Create table to display results
+
+- create `resultTable.ts` to display results in the form of a table
+
+  ```ts
+  import Table from 'cli-table';
+  import { FinalResult } from './finalizeResults.js';
+  async function showResults(results: FinalResult) {
+    console.log('');
+    return new Promise((resolve, reject) => {
+      var operatorsTable = new Table({
+        head: ['Conversion Results'],
+      });
+      let operations: string[][] = [
+        [`last Updated at : ${results.last_update}`],
+        [`Next Update at : ${results.next_update}`],
+        [`${results.base} : ${results.base_amount}`],
+        [`${results.final} : ${results.final_amount}`],
+      ];
+      operatorsTable.push(...operations);
+      console.log(operatorsTable.toString());
+      setTimeout(() => {
+        console.log(' ');
+        resolve(true);
+      }, 1000);
+    });
+  }
+  export { showResults };
+  ```

@@ -1,6 +1,6 @@
 # Command Line Currency Converter (TS)
 
-A CLI based word counter using typescript and published as an executable npm package, complete problem statement is available [here](https://github.com/panaverse/typescript-node-projects/tree/main/project04_currency_converter).
+A CLI based currency converter using typescript and published as an executable npm package, complete problem statement is available [here](https://github.com/panaverse/typescript-node-projects/tree/main/project04_currency_converter).
 
 ## NPM Package
 

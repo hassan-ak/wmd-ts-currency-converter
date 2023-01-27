@@ -39,6 +39,6 @@ Exchange rates are refreshed every 24 hours
 - Results :
   - Latest exchange rate
 
-## Steps to code CLI word counter
+## Steps to code CLI Currency Converter
 
 All the details to code this app is given [here](https://github.com/hassan-ak/wmd-ts-currency-converter/tree/main/stepsToCode/Readme.md).
